@@ -2,4 +2,4 @@
 
 ### Topics 
 
- - [Linked list]{./Linked lsit.md}
+- [Linked list]{./Linked lsit.md}
