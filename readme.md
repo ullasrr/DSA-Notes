@@ -1,5 +1,4 @@
 ## These are my notes 
 
 ### Topics 
-
-- [Linked list]{./Linked lsit.md}
+- [Linked list]{./Linked list.md}
