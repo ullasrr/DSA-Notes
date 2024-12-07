@@ -106,5 +106,93 @@ int level(Node* root){
 - Balancedd Binary tree   (avl condition)
 - Degenerated and skewed Binary trees (has 0 or 1 child)
 
+## Diameter of binary trees LC 543
 
+```cpp
+class Solution {
+public:
+
+    int level(TreeNode* root){
+        if(root==NULL) return 0;
+
+        return 1+ max(level(root->left),level(root->right));
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(root==NULL) return 0;
+        return max(level(root->left)+ level(root->right), max(diameterOfBinaryTree(root->left),diameterOfBinaryTree(root->right)));
+    }
+};
+```
+
+## Same tree LC 100
+
+```cpp
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==NULL && q==NULL) return true;
+        if(p==NULL && q!=NULL) return false;
+        if(p!=NULL && q==NULL) return false;
+        
+        if(p->val != q->val) return false;
+        if(isSameTree(p->left,q->left)==false) return false;
+        if(isSameTree(p->right,q->right)==false) return false;
+
+        return true;
+    }
+};
+```
+
+## Invert Binary Tree
+
+```cpp
+class Solution {
+public:
+
+void helper(TreeNode* root){
+    if(root==NULL) return ;
+
+    TreeNode* temp=root->left;
+    root->left=root->right;
+    root->right=temp;
+    helper(root->left);
+    helper(root->right);
+
+}
+    TreeNode* invertTree(TreeNode* root) {
+        helper(root);
+        return root;
+    }
+};
+```
+
+## Binary tree path inform of string
+
+```cpp
+class Solution {
+public:
+
+void helper(TreeNode* root,string s,vector<string>& ans){
+    if(root==NULL) return;
+    string a=to_string(root->val);
+    if(root->left==NULL && root->right==NULL) {
+        s+=a;
+        ans.push_back(s);
+        return ;
+    }
+     helper(root->left,s+a+"->", ans);
+     helper(root->right,s+a+"->", ans);
+
+}
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        helper(root,"",ans);
+
+        return ans;
+
+    }
+};
+```
+
+## Lowest common ancestor of Binary tree LC 236 (IMP)
 
