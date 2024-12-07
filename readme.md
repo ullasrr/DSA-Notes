@@ -1,4 +1,4 @@
 ## These are my notes 
 
 ### Topics 
-- [Linked list]( google.com )
+- [Linked list]( ./deployment.md )
