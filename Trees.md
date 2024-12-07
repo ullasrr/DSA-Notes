@@ -98,3 +98,13 @@ int level(Node* root){
 }
 ```
 
+## Types of binary trees
+
+- Full Binary tree
+- perfect Binary tree
+- complete binary tree (last level will not be completed)Left to right
+- Balancedd Binary tree   (avl condition)
+- Degenerated and skewed Binary trees (has 0 or 1 child)
+
+
+
