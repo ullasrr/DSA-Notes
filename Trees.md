@@ -53,3 +53,48 @@ void displayTree(Node* root){
     displayTree(root->right);
 }
 
+## Find sum of tree nodes
+
+```cpp
+int sum(Node* root){
+        if(root==NULL) return 0; 
+
+       return root->val + sum(root->left) + sum(root->right);
+
+}
+```
+
+## Find size of tree
+
+```cpp
+int siz(Node* root){
+    if(root==NULL) return 0;
+
+    return 1+siz(root->left) + siz(root->right);
+}
+
+```
+
+## Find node with max value
+
+```cpp
+#include<climits>
+
+int more(Node* root){
+    if(root==NULL) return INT_MIN;
+
+    return max(root->val,max(more(root->left),more(root->right)));
+
+}
+```
+
+## Find the level of the tree
+
+```cpp
+int level(Node* root){
+    if(root==NULL) return 0;
+
+    return 1+max(level(root->left),level(root->right));
+}
+```
+
