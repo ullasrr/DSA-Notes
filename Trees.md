@@ -1,115 +1,85 @@
-# Tree Data Structures and Algorithms
+# **Binary Trees -1**
 
-## Table of Contents
-1. [Introduction to Trees](#introduction-to-trees)
-    - [Generic Trees](#generic-trees)
-    - [Binary Trees](#binary-trees)
-    - [Binary Search Trees](#binary-search-trees)
-    - [AVL Trees](#avl-trees)
-2. [Tree Operations](#tree-operations)
-    - [Display Tree](#display-tree)
-    - [Find Sum of Tree Nodes](#find-sum-of-tree-nodes)
-    - [Find Size of Tree](#find-size-of-tree)
-    - [Find Node with Max Value](#find-node-with-max-value)
-    - [Find the Level of the Tree](#find-the-level-of-the-tree)
-3. [Types of Binary Trees](#types-of-binary-trees)
-4. [Common Problems](#common-problems)
-    - [Diameter of Binary Tree (LC 543)](#diameter-of-binary-tree-lc-543)
-    - [Same Tree (LC 100)](#same-tree-lc-100)
-    - [Invert Binary Tree](#invert-binary-tree)
-    - [Binary Tree Paths](#binary-tree-paths)
-    - [Lowest Common Ancestor (LC 236)](#lowest-common-ancestor-lc-236)
+## **Introduction to trees**
 
----
+- **GENERIC TREES**
+- **BINARY TREES**
+- **BINARY SEARCH TREES (right part greater than left)**
+- **AVL Trees (balanced BST)**
 
-## Introduction to Trees
+## **Display tree**
 
-### Generic Trees
-A generic tree is a data structure in which each node can have zero or more child nodes.
+## **Code implementation**
 
-### Binary Trees
-A binary tree is a tree structure where each node has at most two children, referred to as the left child and the right child.
-
-### Binary Search Trees
-A binary search tree (BST) is a binary tree with the following properties:
-- The left subtree of a node contains only nodes with values less than the node's value.
-- The right subtree of a node contains only nodes with values greater than the node's value.
-
-### AVL Trees
-An AVL tree is a self-balancing binary search tree. It maintains the height balance property:
-- The difference between the heights of the left and right subtrees cannot be more than one for any node.
-
----
-
-## Tree Operations
-
-### Display Tree
 ```cpp
-void displayTree(Node* root){
-    if (root == NULL) return;
+**void displayTree(Node* root){
+    if(root==NULL) return ;
 
-    cout << root->val << "  ";
+    cout<<root->val<<"  ";
+
     displayTree(root->left);
     displayTree(root->right);
-}
 
-## Find sum of tree nodes
+}**
+```
+
+## **Find sum of tree nodes**
 
 ```cpp
-int sum(Node* root){
+**int sum(Node* root){
         if(root==NULL) return 0; 
 
        return root->val + sum(root->left) + sum(root->right);
 
-}
+}**
 ```
 
-## Find size of tree
+## **Find size of tree**
 
 ```cpp
-int siz(Node* root){
+**int siz(Node* root){
     if(root==NULL) return 0;
 
     return 1+siz(root->left) + siz(root->right);
-}
+}**
 
 ```
 
-## Find node with max value
+## **Find node with max value**
 
 ```cpp
-#include<climits>
+**#include<climits>
 
 int more(Node* root){
     if(root==NULL) return INT_MIN;
 
     return max(root->val,max(more(root->left),more(root->right)));
 
-}
+}**
 ```
 
-## Find the level of the tree
+## **Find the level of the tree**
 
 ```cpp
-int level(Node* root){
+**int level(Node* root){
     if(root==NULL) return 0;
 
     return 1+max(level(root->left),level(root->right));
-}
+}** 
 ```
 
-## Types of binary trees
+## **Types of binary trees**
 
-- Full Binary tree
-- perfect Binary tree
-- complete binary tree (last level will not be completed)Left to right
-- Balancedd Binary tree   (avl condition)
-- Degenerated and skewed Binary trees (has 0 or 1 child)
+- **Full Binary tree**
+- **perfect Binary tree**
+- **complete binary tree (last level will not be completed)Left to right**
+- **Balancedd Binary tree   (avl condition)**
+- **Degenerated and skewed Binary trees (has 0 or 1 child)**
 
-## Diameter of binary trees LC 543
+## **Diameter of binary trees LC 543**
 
 ```cpp
-class Solution {
+**class Solution {
 public:
 
     int level(TreeNode* root){
@@ -121,13 +91,13 @@ public:
         if(root==NULL) return 0;
         return max(level(root->left)+ level(root->right), max(diameterOfBinaryTree(root->left),diameterOfBinaryTree(root->right)));
     }
-};
+};**
 ```
 
-## Same tree LC 100
+## **Same tree LC 100**
 
 ```cpp
-class Solution {
+**class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if(p==NULL && q==NULL) return true;
@@ -140,13 +110,13 @@ public:
 
         return true;
     }
-};
+};**
 ```
 
-## Invert Binary Tree
+## **Invert Binary Tree**
 
 ```cpp
-class Solution {
+**class Solution {
 public:
 
 void helper(TreeNode* root){
@@ -163,13 +133,13 @@ void helper(TreeNode* root){
         helper(root);
         return root;
     }
-};
+};**
 ```
 
-## Binary tree path inform of string
+## **Binary tree path inform of string**
 
 ```cpp
-class Solution {
+**class Solution {
 public:
 
 void helper(TreeNode* root,string s,vector<string>& ans){
@@ -191,13 +161,13 @@ void helper(TreeNode* root,string s,vector<string>& ans){
         return ans;
 
     }
-};
+};**
 ```
 
-## Lowest common ancestor of Binary tree LC 236 (IMP)
+## **Lowest common ancestor of Binary tree LC 236 (IMP)**
 
 ```cpp
-class Solution {
+**class Solution {
 public:
 
     bool exists(TreeNode* root, TreeNode* target){
@@ -215,6 +185,106 @@ public:
         else return lowestCommonAncestor(root->right,p,q);      
 
     }
-};
+};**
 ```
 
+# **Binary trees -2**
+
+## **Traversal in Trees→ To visit every node**
+
+### **DFS,BFS,Moris Traversal**
+
+### **Preorder (Root left Right)**
+
+```cpp
+**void displayTree(Node* root){
+    if(root==NULL) return ;
+
+    cout<<root->val<<"  ";
+
+    displayTree(root->left);
+    displayTree(root->right);
+
+}**
+```
+
+### **In order (Left Root Right)**
+
+```cpp
+**void displayTree(Node* root){
+    if(root==NULL) return ;
+
+    displayTree(root->left);
+    cout<<root->val<<"  ";
+    displayTree(root->right);
+}**
+```
+
+### **Post order (Left Right Root)**
+
+```cpp
+**void displayTree(Node* root){
+    if(root==NULL) return ;
+
+    displayTree(root->left);
+    displayTree(root->right);
+    cout<<root->val<<"  ";
+}**
+```
+
+## **Print elements of nth level**
+
+```cpp
+**void displaynth(Node* root,int curr,int level){
+    if(root==NULL) return;
+    if(curr==level){
+     cout<<root->val<<" ";
+     return}
+    displaynth(root->left,curr+1,level);
+    displaynth(root->right,curr+1,level);
+ }**
+```
+
+## **IN preorder**
+
+**T.C = O(N)**
+
+**S.C = O(levels+1) , O(h+2) or O(h)**
+
+## **Level order traversal (Right to left) LC 102**
+
+```cpp
+**class Solution {
+public:
+    void nth(TreeNode* root,int curr,int lev,vector<int> &v){
+        if(root==NULL) return;
+        if(curr==lev){
+            v.push_back(root->val);
+            return;
+        }
+        nth(root->left,curr+1,lev,v);
+        nth(root->right,curr+1,lev,v);
+    }
+    void lOrder(TreeNode* root,vector<vector<int>> &ans){
+        int n=level(root);
+        for(int i=1;i<=n;i++){
+            vector<int> v;
+            nth(root,1,i,v);
+            ans.push_back(v);
+
+        }
+
+    }
+    int level(TreeNode* root){
+        if(root==NULL) return 0;
+        return 1+ max(level(root->left),level(root->right));
+    }
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        lOrder(root,ans);
+        return ans;
+    }
+};**
+```
+
+## **Level order in Zigzag manner LC 103**
