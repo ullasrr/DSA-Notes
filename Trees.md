@@ -288,3 +288,152 @@ public:
 ```
 
 ## **Level order in Zigzag manner LC 103**
+
+
+## **Level order traversal using QUEUES(BFS)**
+
+```cpp
+**void levelqueue(Node* root){   //BFS method
+    queue<Node*> q;
+    q.push(root);
+    while (q.size()>0)
+    {
+        Node* temp=q.front();
+        q.pop();
+        cout<<temp->val<<" ";
+        if(temp->right!=NULL) q.push(temp->right);
+        if(temp->left!=NULL) q.push(temp->left);
+    }
+    
+}**
+```
+
+## **Construct a tree from level order traversal**
+
+```cpp
+**Node* construct(int arr[],int n){
+    queue<Node*> q;
+    Node* root=new Node(arr[0]);
+    q.push(root);
+    int i=1;
+    int j=2;
+    while(q.size()>0 && i<n){
+        Node* temp=q.front();
+        q.pop();
+        Node* l;
+        Node* r;
+        if(arr[i]!= INT_MIN){
+            l=new Node(arr[i]);
+        }
+        else{
+            l=NULL;
+        }
+        if( j!=n && arr[j]!= INT_MIN){
+            r=new Node(arr[j]);
+        }
+        else{
+            r=NULL;
+        }
+        temp->left=l;
+        temp->right=r;
+
+        if(l!=NULL) q.push(l);
+        if(r!=NULL) q.push(r);
+        i+=2;
+        j+=2;
+    }
+    return root;
+}**
+```
+
+# **Binary trees -3**
+
+## **Traversal iterative (Preorder, In order, Post order)**
+
+### **Preorder Traversal (Iterative) → without recursion and using stack**
+
+```cpp
+**class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        if(root==NULL) return ans;
+        stack<TreeNode*> st;
+        st.push(root);
+
+        while(st.size()>0){
+            TreeNode* temp=st.top();
+            st.pop();
+            ans.push_back(temp->val);
+            
+            if(temp->right != NULL) st.push(temp->right);
+            if(temp->left != NULL) st.push(temp->left);
+
+        }
+        return ans;
+    }
+};**
+```
+
+### **Post order  → using 1 stack and a vector**
+
+```cpp
+**// Same as preorder but reverse templeft and right and reverse vector
+class Solution {  
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        if(root==NULL) return ans;
+        stack<TreeNode*> st;
+        st.push(root);
+
+        while(st.size()>0){
+            TreeNode* temp=st.top();
+            st.pop();
+            ans.push_back(temp->val);
+            
+            if(temp->left != NULL) st.push(temp->left);
+            if(temp->right != NULL) st.push(temp->right);
+            
+        }
+    }
+    
+    reverse(ans.begin(),ans.end());
+    return ans;
+
+};**
+```
+
+### **INORDER → 1 stack**
+
+**Process** 
+
+```cpp
+**class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode*> st;
+        TreeNode* node=root;
+        while(true){
+            if(node!=NULL){
+                st.push(node);
+                node=node->left;
+            }
+            else{
+                if(st.size()==0 && node==NULL){
+                    break;
+                }
+                TreeNode* temp=st.top();
+                ans.push_back(temp->val);
+                st.pop();
+                node=temp->right;
+            }
+            
+        }
+        return ans;
+    }
+};**
+```
+
+### **Boundary traversal  → Print nodes which are at the boundary**
