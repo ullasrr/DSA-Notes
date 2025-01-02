@@ -45,3 +45,49 @@ public:
     }   
 };
 ```
+
+## **Lowest common ancestor of Binary tree LC 235**
+
+```cpp
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root->val > p->val && root->val < q->val) return root;
+        else if(root->val > p->val && root->val > q->val) return lowestCommonAncestor(root->left,p,q);
+        else if(root->val < p->val && root->val < q->val) return lowestCommonAncestor(root->right,p,q);        
+        else return root;
+    }
+};
+```
+
+## Validate BST LC 98
+
+### Method-1 → Using max of trees (Brute force)
+
+### Method-2 → In order traversal (cause in order traversal of BST is sorted)
+
+```cpp
+class Solution {
+public:
+    void Inorder(TreeNode* root,vector<int> &v){
+        if(root==NULL) return;
+
+        Inorder(root->left,v);
+        v.push_back(root->val);
+        Inorder(root->right,v);
+    }
+    bool isValidBST(TreeNode* root) {
+        vector<int> v;
+        Inorder(root,v);
+        for(int i=0;i<v.size()-1;i++){
+            if(v[i]<v[i+1]){
+                continue;
+            } 
+            else return false;
+        }
+        return true;
+    }
+};
+```
+
+## Binary search Tree to Greater Sum Tree
