@@ -84,3 +84,93 @@
     }
 }**
 ```
+
+
+## **Get element at any index**
+
+```cpp
+**int getAtIdx(int idx){
+    if(idx<0 || idx>=size){
+        cout<<"Invalid"<<endl;
+        return -1;
+    }
+    else if(idx==0){
+        return head->val;
+    }
+    else if(idx==size-1){
+        return tail->val;
+    }
+    else{
+        Node* temp=head;
+        for(int i=1;i<=idx;i++){
+            temp=temp->next;
+        }
+        return temp->val;
+    }
+}**
+```
+
+## **Limitation of Linked List → T.C is O(n)**
+
+## **Delete at Head**
+
+```cpp
+**void deleteEleHead(){
+    if(size==0) {
+        cout<<"Linked List is empty"<<endl;
+        return;
+    }
+        head=head->next;
+        size--;
+    
+}**
+```
+
+## **Delete at Tail**
+
+```cpp
+**void delete_tail(){
+    if(size==0) {
+        cout<<"Linked List is empty"<<endl;
+        return;
+    }
+    Node* temp=head;
+    while(temp->next->next !=NULL){
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    tail=temp;
+    size--;
+    return;
+    
+}**
+```
+
+## **Delete at any Index**
+
+```cpp
+**void delete_any_idx(int idx){
+    if(idx<0 || idx>size-1){
+        cout<<"invalid"<<endl;
+        return;
+    }
+    else if(idx==0){
+        deleteEleHead();
+        return;
+    }
+    else if(idx==size){
+        delete_tail();
+        return;
+    }
+    else{
+    
+    Node* temp=head;
+    while(idx>1){
+        temp=temp->next;
+        idx--;
+    }
+    temp->next=temp->next->next;
+    size--;
+    return;}
+}**
+```
