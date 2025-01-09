@@ -102,7 +102,7 @@ void reverse(stack<int>& st){
 ## **Array/vector implementation**
 
 ```cpp
-**// stack using array 
+// stack using array 
 class Stack{
 public:
 int arr[5];
@@ -124,7 +124,7 @@ int size(){
     return idx+1;
 }
 
-};**
+};
 ```
 
 ## Linked List implementation of stacks
