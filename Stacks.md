@@ -59,3 +59,72 @@ return 0;
 ```
 
 ## **Display stack recursively**
+
+```cpp
+**void displayrev(stack<int> &st){
+    if(st.size()==0) return;
+    int x =st.top();
+    st.pop();
+    displayrev(st);
+    st.push(x);
+    cout<<x<<endl;
+}**
+```
+
+## **Push at bottom recursively every element**
+
+```cpp
+**void pushAtBottom(stack<int> & st,int val){
+    if(st.size()==0){
+        st.push(val);
+        return;
+    }
+    int x=st.top();
+    st.pop();
+    pushAtBottom(st,val);
+    st.push(x);
+
+}
+
+void reverse(stack<int>& st){
+    if(st.size()==1) return;
+    int x=st.top();
+    st.pop();
+    reverse(st);
+    pushAtBottom(st,x);
+}**
+```
+
+### **Overflow → If your stack is full and you are trying to push an element this error is shown**
+
+### **Underflow → If the stack is empty and you call the function pop and top then the underflow condition occur**
+
+## **Array/vector implementation**
+
+```cpp
+**// stack using array 
+class Stack{
+public:
+int arr[5];
+int idx=-1;
+
+void push(int val){
+    idx++;
+    arr[idx]=val;
+}
+
+void pop(){
+    idx--;
+}
+
+int top(){
+    return arr[idx];
+}
+int size(){
+    return idx+1;
+}
+
+};**
+```
+
+## Linked List implementation of stacks
